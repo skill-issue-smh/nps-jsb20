@@ -1,0 +1,104 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+#header{
+    background-color: black;
+}
+
+a{
+    color: white;
+    font-size: 20px;
+}
+
+#nav li {
+  display: inline-block;
+  padding: 15px;
+}
+#nav li :hover{
+    background-color: rgb(85, 85, 85);
+}
+#ch{
+    width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+}
+#body{
+    text-align: center;
+}
+#title{
+    font-size: 40px;
+    text-align: center;
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: lighter;
+}
+.text{
+    width: 100%;
+    text-align: justify;
+    margin: auto;
+}
+.name{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+#subtitle{
+    margin: 20px;
+}
+.opacity{
+    opacity: 50%;
+}
+.italic{
+    font-style: italic;
+}
+h2{
+    font-size: 30px;
+    font-weight: 400;
+    margin: 10px 0px;
+}
+.wide{
+    letter-spacing: 4px;
+}
+p{
+    margin: 10px;
+}
+.info-input{
+    width: 100%;
+    padding: 8px;
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+.info-input-button{
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    color: #FFF;
+    background-color: black;
+}
+form .info-input-button{
+    margin: 20px 0px;
+}
+.info-input-button:hover{
+    color: black;
+    background-color: #ccc;
+    cursor: pointer;
+}
+.container{
+    width: 70%;
+    margin: auto;
+}
+.powered a{
+    color: red;
+}

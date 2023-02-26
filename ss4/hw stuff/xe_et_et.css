@@ -1,0 +1,26 @@
+#tit{
+    border-bottom: 5px solid rgb(68, 180, 255);
+    text-align: center;
+}
+#stuff{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 50px;
+}
+.client{
+    width: 100%;
+    display: inline-block;
+    border: 2px solid rgb(29, 197, 29);
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+.client p{
+    text-align: justify;
+    margin: 25px;
+    font-style: italic;
+    color: rgb(100, 100, 100);
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: lighter;
+}
