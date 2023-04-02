@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<style>
+    #infomation{
+        padding: 50px;
+        border: 2px ridge rgb(180, 180, 180);
+        border-radius: 25px;
+    }
+</style>
+
+<body>
+    <h1>SEND PERSONL INFORMSHN FOR FREE BOBOX!1!!1!!!!1</h1>
+    <div id="infomation">
+        <div><input id="name" placeholder="name" type="text"></div>
+        <br>
+        <div><input id="age" placeholder="age" type="number"></div>
+        <br>
+        <div><input id="phone-number" placeholder="phon numbr" type="text"></div>
+        <br>
+        <div>
+            <p>yuor gender</p>
+            
+            <div><label for="male">mail</label>
+                <input type="radio" id="male" name="gender" value="male">
+            </div>
+
+            <div><label for="femail">femail</label>
+                <input type="radio" id="female" name="gender" value="female">
+            </div>
+
+            <div><label for="gay">gey</label>
+                <input type="radio" id="gey" name="gender" value="gey"></div>
+
+            <div><label for="business">business</label>
+                <input type="radio" id="business" name="gender" value="business">
+            </div>
+            
+            <div><label for="apache-helicopter">attack apache helicoper</label>
+                <input type="radio" id="apache-helicopter" name="gender" value="apache-helicopter">
+            </div>
+
+            <div><label for="engineer">engineer gaming</label>
+                <input type="radio" id="engineer" name="gender" value="e">
+            </div>
+        </div>
+    </div>
+    <button id="button" onclick="check()">free bobox</button>
+</body>
+<script>
+    function check(){
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone-number").value;
+        let age = document.getElementById("age").value;
+        let text;
+        if (name == "" || phone == "" || age == "") {
+            alert("must be filled out");
+        }
+        if (isNaN(phone))
+            alert("wrong phon numbr");
+        if (isNaN(age) || age < 1 || age > 100) {
+            alert("wrong age");
+        }
+    }
+    </script>
+</html>
