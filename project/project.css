@@ -1,23 +1,31 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+    outline: none;
 }
 html{
     scroll-behavior: smooth;
+    background-color: rgb(0, 162, 255);
 }
 #contain{
-    width: 60%;
+    width: 50%;
     margin: auto;
+    color: white;
 }
 .heading{
     font-size: 40px;
     text-align: center;
     font-family: "Segoe UI",Arial,sans-serif;
     font-weight: bolder;
+    margin: 25px 0px;
 }
 #nav{
-    background-color: rgb(0, 212, 0);
-    position: fixed;
+    background-color: rgb(0, 145, 7);
     width: 100%;
 }
 a{
@@ -26,18 +34,21 @@ a{
 }
 #nav li {
     list-style: none;
-    height: 25px;
+    padding: 20px 20px;
     display: inline-block;
 }
 #nav li :hover{
     background-color: rgb(1, 150, 46);
 }
 #donate{
-    margin: auto;
-    border: 2px ridge grey;
-    border-radius: 20px;
-    padding: 50px;
-    width: 50%;
+
+    background-color: #ffffff;
+    border: 1px ridge rgb(206, 206, 206);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+
 }
 table{
     width: 100%;
@@ -50,4 +61,45 @@ table{
 th,td{
     border: 2px ridge rgb(170, 170, 170);
     padding: 10px;
+}
+.button{
+    background-color: white; 
+    border: 1px ridge orangered;
+    color: black;
+    padding: 24px 46%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 9999px;
+}
+.button:hover{
+    background-color: orangered;
+    color: white;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #ffffff;
+
+  }
+  
+.grid-item {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 2px;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+}
+form{
+    padding: 10px;
+    border: ;
+}
+input .grid-item{
+    width: 150%;
+    border: 1px ridge orangered;
 }
