@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lorax Squad</title>
+    <link rel="shortcut icon" href="https://images.emojiterra.com/twitter/512px/1f62d.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./donate.css">
+    <style type="text/css">
+        .vue-slider-dot {
+            position: absolute;
+            -webkit-transition: all 0s;
+            transition: all 0s;
+            z-index: 5
+        }
+
+        .vue-slider-dot:focus {
+            outline: none
+        }
+
+        .vue-slider-dot-tooltip {
+            position: absolute;
+            visibility: hidden
+        }
+
+        .vue-slider-dot-hover:hover .vue-slider-dot-tooltip,
+        .vue-slider-dot-tooltip-show {
+            visibility: visible
+        }
+
+        .vue-slider-dot-tooltip-top {
+            top: -10px;
+            left: 50%;
+            -webkit-transform: translate(-50%, -100%);
+            transform: translate(-50%, -100%)
+        }
+
+        .vue-slider-dot-tooltip-bottom {
+            bottom: -10px;
+            left: 50%;
+            -webkit-transform: translate(-50%, 100%);
+            transform: translate(-50%, 100%)
+        }
+
+        .vue-slider-dot-tooltip-left {
+            left: -10px;
+            top: 50%;
+            -webkit-transform: translate(-100%, -50%);
+            transform: translate(-100%, -50%)
+        }
+
+        .vue-slider-dot-tooltip-right {
+            right: -10px;
+            top: 50%;
+            -webkit-transform: translate(100%, -50%);
+            transform: translate(100%, -50%)
+        }
+    </style>
+    <style type="text/css">
+        .vue-slider-marks {
+            position: relative;
+            width: 100%;
+            height: 100%
+        }
+
+        .vue-slider-mark {
+            position: absolute;
+            z-index: 1
+        }
+
+        .vue-slider-ltr .vue-slider-mark,
+        .vue-slider-rtl .vue-slider-mark {
+            width: 0;
+            height: 100%;
+            top: 50%
+        }
+
+        .vue-slider-ltr .vue-slider-mark-step,
+        .vue-slider-rtl .vue-slider-mark-step {
+            top: 0
+        }
+
+        .vue-slider-ltr .vue-slider-mark-label,
+        .vue-slider-rtl .vue-slider-mark-label {
+            top: 100%;
+            margin-top: 10px
+        }
+
+        .vue-slider-ltr .vue-slider-mark {
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .vue-slider-ltr .vue-slider-mark-step {
+            left: 0
+        }
+
+        .vue-slider-ltr .vue-slider-mark-label {
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%)
+        }
+
+        .vue-slider-rtl .vue-slider-mark {
+            -webkit-transform: translate(50%, -50%);
+            transform: translate(50%, -50%)
+        }
+
+        .vue-slider-rtl .vue-slider-mark-step {
+            right: 0
+        }
+
+        .vue-slider-rtl .vue-slider-mark-label {
+            right: 50%;
+            -webkit-transform: translateX(50%);
+            transform: translateX(50%)
+        }
+
+        .vue-slider-btt .vue-slider-mark,
+        .vue-slider-ttb .vue-slider-mark {
+            width: 100%;
+            height: 0;
+            left: 50%
+        }
+
+        .vue-slider-btt .vue-slider-mark-step,
+        .vue-slider-ttb .vue-slider-mark-step {
+            left: 0
+        }
+
+        .vue-slider-btt .vue-slider-mark-label,
+        .vue-slider-ttb .vue-slider-mark-label {
+            left: 100%;
+            margin-left: 10px
+        }
+
+        .vue-slider-btt .vue-slider-mark {
+            -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%)
+        }
+
+        .vue-slider-btt .vue-slider-mark-step {
+            top: 0
+        }
+
+        .vue-slider-btt .vue-slider-mark-label {
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%)
+        }
+
+        .vue-slider-ttb .vue-slider-mark {
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .vue-slider-ttb .vue-slider-mark-step {
+            bottom: 0
+        }
+
+        .vue-slider-ttb .vue-slider-mark-label {
+            bottom: 50%;
+            -webkit-transform: translateY(50%);
+            transform: translateY(50%)
+        }
+
+        .vue-slider-mark-label,
+        .vue-slider-mark-step {
+            position: absolute
+        }
+    </style>
+    <style type="text/css">
+        .vue-slider {
+            position: relative;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            display: block;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        .vue-slider-rail {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            -webkit-transition-property: width, height, left, right, top, bottom;
+            transition-property: width, height, left, right, top, bottom
+        }
+
+        .vue-slider-process {
+            position: absolute;
+            z-index: 1
+        }
+    </style>
+    <style>
+        @import url("chrome-extension://adlpodnneegcnbophopdmhedicjbcgco/content/styles.css");
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <a href="./index.html" class="logo">
+            <i class="fa-solid fa-tree" style="color: #4ade80; font-size: 30px"></i>
+            <span>TeamTrees</span>
+        </a>
+        <ul>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="#achievement">Our progress</a></li>
+            <li><a href="#media">Contact us</a></li>
+        </ul>
+    </div>
+    <div id="contain">
+        <div id="heading">
+            <h1 class="heading">The Lorax Squad</h1>
+        </div>
+        <div id="donate">
+            <h3 style="color: #1a3156">$1 plants a tree</h3>
+            <div class="grid-container">
+                <div class="grid-item button" onclick="selected(this)">1$</div>
+                <div class="grid-item button" onclick="selected(this)">5$</div>
+                <div class="grid-item button" onclick="selected(this)">10$</div>
+                <div class="grid-item button" onclick="selected(this)">50$</div>
+            </div>
+            <input class="grid-item" placeholder="Custom amount" type="number" onclick="selected(this)">
+            <button id="submit-button" onclick="">Donate</button>
+        </div>
+        <div id="leaderboard">
+            <div id="div-recent">
+                <table id="recent">
+                    <caption>
+                        Recent
+                    </caption>
+                    <tbody>
+                        <tr>
+                            <th>Recent donator</th>
+                            <th>Trees planted</th>
+                        </tr>
+                        <tr>
+                            <td>Carlee Boughey</td>
+                            <td>10 Trees</td>
+                        </tr>
+                        <tr>
+                            <td>Damon Smails</td>
+                            <td>50 Trees</td>
+                        </tr>
+                        <tr>
+                            <td>Wilow Spindler</td>
+                            <td>1 Tree</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="div-top">
+                <table id="top">
+                    <caption>
+                        Top
+                    </caption>
+                    <tbody>
+                        <tr>
+                            <th>Top donator</th>
+                            <th>Trees planted</th>
+                        </tr>
+                        <tr>
+                            <td>Carlee Boughey</td>
+                            <td>10 Trees</td>
+                        </tr>
+                        <tr>
+                            <td>Wilow Spindler</td>
+                            <td>1 Trees</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="achievement">
+            <div id="achievement-contain">
+                <h2 class="heading">OUR PROGRESS</h2>
+                <div class="continent">
+                    <h3 class="heading">ASIA</h3>
+                    <div class="continent-contain">
+                        <div class="section">
+                            <h4>Vietnam</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>China</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>India</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Bangladesh</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Turkey</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="continent">
+                    <h3 class="heading">Europe</h3>
+                    <div class="continent-contain">
+                        <div class="section">
+                            <h4>Germany</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>France</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Ukraine</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Hungary</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="continent">
+                    <h3 class="heading">Africa</h3>
+                    <div class="continent-contain">
+                        <div class="section">
+                            <h4>Kenya</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Madagascar</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Central Africa</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Mozambique</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Burundi</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Chad</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Senegal</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Mali</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="continent">
+                    <h3 class="heading">North America</h3>
+                    <div class="continent-contain">
+                        <div class="section">
+                            <h4>Canada</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>United State of America</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Mexico</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="continent">
+                    <h3 class="heading">South America</h3>
+                    <div class="continent-contain">
+                        <div class="section">
+                            <h4>Amazon</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Brazil</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Peru</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Argentina</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>Chile</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="continent">
+                    <h3 class="heading">Australia</h3>
+                    <div class="continent-contain">
+                        <div class="section">
+                            <h4>Australia</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                        <div class="section">
+                            <h4>New Zealand</h4>
+                            <img class="img-fit"
+                                src="https://cdn.shopify.com/s/files/1/0019/5952/files/Could_Global_CO2_Levels_be_Reduced_by_Planting_Trees_1.jpg"
+                                alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat placeat odit incidunt
+                                consequuntur, assumenda voluptatem dolorem perspiciatis voluptate animi natus a
+                                repellendus
+                                cumque. Excepturi quia ipsam non delectus, iure dolores!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="media">
+        <p>facebook</p>
+        <p>uh i forgor</p>
+    </div>
+    </div>
+
+
+
+
+    <script>
+        let divItems = document.getElementsByClassName("grid-item");
+
+        let value = null;
+
+        let donators = localStorage.getItem("donators")
+            ? JSON.parse(localStorage.getItem("donators"))
+            : [
+                {
+                    name: "Wilow Spindler",
+                    count: 1,
+                },
+                {
+                    name: "Damon Smails",
+                    count: 50,
+                },
+                {
+                    name: "Carlee Boughey",
+                    count: 10,
+                },
+            ];
+
+        function selected(item) {
+            clear();
+            item.style.backgroundColor = "#8BB049";
+            item.style.color = "white";
+            item.classList.add("input-focused");
+
+            value = Number(item.innerText.slice(0, -1));
+        }
+
+        document.querySelector("input").addEventListener("keyup", (e) => {
+            value = Number(e.target.value);
+        });
+
+        function clear() {
+            for (let i = 0; i < divItems.length; i++) {
+                let item = divItems[i];
+                item.style.backgroundColor = "white";
+                item.style.color = "black";
+                item.classList.remove("input-focused");
+            }
+        }
+
+        function showDonators() {
+            document.getElementById("recent").innerHTML = `
+    <caption>
+      Recent
+    </caption>
+    <tr>
+      <th>Recent Donator</th>
+      <th>Trees planted</th>
+    </tr>
+    ${[...donators]
+                    .reverse()
+                    .map(
+                        (item) => `<tr>
+    <td>${item.name}</td>
+    <td>${item.count} Trees</td>
+  </tr>`
+                    )
+                    .join("")}
+    `;
+
+            document.getElementById("top").innerHTML = `
+    <caption>
+    Top
+    </caption>
+    <tr>
+      <th>Top donator</th>
+      <th>Trees planted</th>
+    </tr>
+    ${[...donators]
+                    .sort((a, b) => b.count - a.count)
+                    .map(
+                        (item) => `<tr>
+    <td>${item.name}</td>
+    <td>${item.count} Trees</td>
+  </tr>`
+                    )
+                    .join("")}
+    `;
+        }
+        showDonators();
+
+        document.getElementById("submit-button").addEventListener("click", () => {
+            if (!value) {
+                alert("Please select a donation amount");
+            } else {
+                let name = "";
+
+                while (!name.trim()) {
+                    name = prompt("Please enter your name: ") || "";
+                }
+
+                donators.push({
+                    name,
+                    count: value,
+                });
+
+                localStorage.setItem("donators", JSON.stringify(donators));
+
+                showDonators();
+
+                clear();
+                document.querySelector("input").value = "";
+            }
+        });
+
+    </script>
+
+</body>
+<div class="troywell-avia"></div>
+<div class="troywell-caa"></div>
+
+</html>
